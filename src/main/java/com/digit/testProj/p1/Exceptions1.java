@@ -20,7 +20,7 @@ public static void main(String[] args) {
 	catch(ArithmeticException e) {
 		System.out.println(e.getMessage());
 	}
-	catch(NegativeArraySizeException e) {
+	catch(NegativeArraySizeException | NullPointerException e) {
 		System.out.println("Negative Size");
 	}
 	catch(Exception e) {
