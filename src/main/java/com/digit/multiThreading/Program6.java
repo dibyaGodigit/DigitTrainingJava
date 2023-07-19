@@ -23,11 +23,12 @@ class Warrior extends Thread{
 			synchronized (res2) {
 				System.out.println("Karna Acquired "+res2);
 				Thread.sleep(3000);
+				synchronized(res3) {
+					System.out.println("Karna Acquired "+res3);
+					Thread.sleep(3000);
+				}
 			}
-			synchronized(res3) {
-				System.out.println("Karna Acquired "+res3);
-				Thread.sleep(3000);
-			}
+			
 			}
 		}
 		catch(Exception e) {
@@ -40,15 +41,17 @@ class Warrior extends Thread{
 			synchronized(res1) {
 				System.out.println("Arjuna Acquired "+res1);
 				Thread.sleep(3000);
-			}
 				synchronized (res2) {
 					System.out.println("Arjuna Acquired "+res2);
 					Thread.sleep(3000);
+					synchronized(res3) {
+						System.out.println("Arjuna Acquired "+res3);
+						Thread.sleep(3000);
+					}
 				}
-				synchronized(res3) {
-					System.out.println("Arjuna Acquired "+res3);
-					Thread.sleep(3000);
-				}
+			}
+				
+				
 		}
 		catch(Exception e) {
 			e.printStackTrace();
