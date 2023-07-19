@@ -2,7 +2,7 @@ package com.digit.multiThreading;
 
 import java.util.Scanner;
 
-class Operations1 extends Thread{
+class Operation1 implements Runnable{
 	Scanner sc = new Scanner(System.in);
 	public void run() {
 		banking();
@@ -20,7 +20,7 @@ class Operations1 extends Thread{
 	}
 }
 
-class Operations2 extends Thread{
+class Operation2 implements Runnable{
 	public void run() {
 		try{
 			printing();	
@@ -36,7 +36,7 @@ class Operations2 extends Thread{
 	}
 }
 
-class Operations3 extends Thread{
+class Operation3 implements Runnable{
 	Scanner sc = new Scanner(System.in);
 	public void run() {
 			add();
@@ -54,23 +54,19 @@ class Operations3 extends Thread{
 	
 }
 
-public class Program2 {
+public class Program3 {
 public static void main(String[] args) {
-	Operations1 op1 = new Operations1();
-	op1.setName("banking");
+	Operation1 op1 = new Operation1();
+	Thread t1 = new Thread(op1);
+	Operation2 op2 = new Operation2();
+	Thread t2 = new Thread(op2);	
+	Operation3 op3 = new Operation3();
+	Thread t3 = new Thread(op3);
 	
 	
-	Operations2 op2 = new Operations2();
-	op2.setName("printing");
-	
-	
-	Operations3 op3 = new Operations3();
-	op3.setName("add");
-	
-	
-	op1.start();
-	op2.start();
-	op3.start();
+	t1.start();
+	t2.start();
+	t3.start();
 	
 	
 }
